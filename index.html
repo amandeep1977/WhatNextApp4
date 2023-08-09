@@ -1,0 +1,63 @@
+<html>
+	<head>
+	<title> What Next App By Amandeep </title>
+	<style>
+		* { font-size:40px; }
+		body { background-color: azure; }
+	</style>
+
+	<script>
+		function find() {
+			event.preventDefault();
+			let name = document.getElementById("name");
+
+			if(name.value == "") {
+				alert("Name cannot be empty");
+				ans.innerHTML = "";
+				name.focus();
+				return;
+			} else if(name.value.trim() == "") {
+				alert("Name cannot be only spaces");
+				ans.innerHTML = "";
+				name.focus();
+				return;
+			}
+			else if(!name.value.match(/^[A-Za-z ]+$/)) {
+				alert("Name should contain only alphabets");
+				ans.innerHTML = "";
+				name.focus();
+				return;
+			}
+			
+			let job = document.getElementById("job");
+			let ms = document.getElementById("ms");
+			let mba = document.getElementById("mba");
+			let ans = document.getElementById("ans");
+			
+			let choice = "";
+			if(job.checked)		choice="Job";
+			else if (ms.checked)	choice = "MS";
+			else			choice = "MBA";
+		
+			let msg = "Name : " + name.value + " Choice : " + choice;
+			ans.innerHTML = msg;
+		}
+	</script>
+	</head>
+	<body>
+	<center>
+		<h1> What Next?? </h1>	
+		<br>
+		<form onsubmit="find()">
+			<input type="text" placeholder="Enter your name" id="name" />
+			<br><br>
+			<input type="radio" name="c" id="job" checked="true" />Job
+			<input type="radio" name="c" id="ms"/>MS
+			<input type="radio" name="c" id="mba"/>MBA
+			<br><br>
+			<input type="submit" />
+		</form>
+		<h2 id="ans"></h2>
+	</center>
+	</body>
+</html>
